@@ -1,0 +1,5 @@
+venv/
+**/pycache
+*workflow.odt*
+.ipynb_checkpoints
+data/
