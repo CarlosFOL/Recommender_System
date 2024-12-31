@@ -6,7 +6,7 @@ import threading
 
 
 API_URL = "https://zara-boost-hackathon.nuwe.io/users"
-PATH = "../../data/raw"
+PATH = "../data"
 DATASET = "users.csv"
 VARIABLES = ["user_id", "country", "R", "F", "M"]
 # To check if the request was answered correctly
