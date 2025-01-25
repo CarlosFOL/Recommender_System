@@ -1,5 +1,7 @@
-from sklearn.cluster import KMeans
 from math import dist, sqrt
+import pandas as pd
+from sklearn.cluster import KMeans
+
 
 def _BSS(X):
     """
@@ -28,12 +30,12 @@ def _BSS(X):
         for i in range(k):
             C_i = X.iloc[labels == i, :]
             centroid_i = C_i.mean()
-            BSS += C_i.shape[0] * dist(centroid_i, bar_X)**2
+            value += C_i.shape[0] * dist(centroid_i, bar_X)**2
         return value
     return get
 
 
-def kmeans_statistics(X):
+def kmeans_statistics(X: pd.DataFrame) -> tuple[list[float], list[float]]:
     """
     Compute the BSS and WSS for different values of k
     in order to get the best one for this algorithm.
@@ -48,9 +50,16 @@ def kmeans_statistics(X):
     # Stats
     WSS = []
     BSS = []
-    for k in range(2, sqrt(n)): # Square root as heuristic rule
+    upper_limit = round(sqrt(n)) # Square root as heuristic rule
+    for k in range(2, upper_limit): 
         model = KMeans(n_clusters = k, random_state=123)
         model.fit(X)
         WSS.append(model.inertia_)
         BSS.append(get_BSS(model, k))
     return WSS, BSS
+
+if __name__ == "__main__":
+    df = pd.read_csv("../data/users.csv", nrows=10000)
+    WSS, BSS = kmeans_statistics(df)
+    kmeans_summary = pd.DataFrame({"WSS": WSS, "BSS": BSS})
+    print(kmeans_summary)
