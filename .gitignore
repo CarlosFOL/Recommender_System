@@ -1,0 +1,8 @@
+venv/
+*pycache*
+*workflow.odt*
+.ipynb_checkpoints
+data/users.csv
+data/products.pkl
+data/train.csv
+report.md
