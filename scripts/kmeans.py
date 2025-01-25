@@ -35,7 +35,7 @@ def _BSS(X):
     return get
 
 
-def kmeans_statistics(X: pd.DataFrame) -> tuple[list[float], list[float]]:
+def kmeans_statistics(X: pd.DataFrame, upper_limit:float = None) -> tuple[list[float], list[float]]:
     """
     Compute the BSS and WSS for different values of k
     in order to get the best one for this algorithm.
@@ -50,8 +50,9 @@ def kmeans_statistics(X: pd.DataFrame) -> tuple[list[float], list[float]]:
     # Stats
     WSS = []
     BSS = []
-    upper_limit = round(sqrt(n)) # Square root as heuristic rule
-    for k in range(2, upper_limit): 
+    if upper_limit is None or type(upper_limit) != int:
+        upper_limit = round(sqrt(n)) # Square root as heuristic rule
+    for k in range(2, upper_limit + 1): 
         model = KMeans(n_clusters = k, random_state=123)
         model.fit(X)
         WSS.append(model.inertia_)
