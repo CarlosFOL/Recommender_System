@@ -2,5 +2,8 @@ venv/
 *pycache*
 *workflow.odt*
 .ipynb_checkpoints
-*.csv
+data/train.csv
+data/users.csv
+data/products.pkl
+data/embeddings.csv
 report.md

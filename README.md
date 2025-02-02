@@ -5,6 +5,7 @@ This was a challenge of the BOOST HACKHATON organized by INDITEX. The goal of th
 * [Users](https://cfolstorage.s3.eu-west-3.amazonaws.com/data_recommender_system/users.csv)[18 MB]: Customers's information. To gather this data we had to design an script (`scripts/users_api.py`) to automate the sending of requests to the API that they provide us.
 
 * [Products](https://cfolstorage.s3.eu-west-3.amazonaws.com/data_recommender_system/products.pkl)[186 MB]: The list of products that the organization sells.
+    * Embeddings[536 MB]: The embeddings of the product's flat image obtained from computer vision techniques.
 
 * [Train](https://cfolstorage.s3.eu-west-3.amazonaws.com/data_recommender_system/train.csv)[2.8 GB]: The training data that we have used to design this system. 
 
