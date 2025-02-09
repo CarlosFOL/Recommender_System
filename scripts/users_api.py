@@ -14,13 +14,13 @@ isOK = lambda request: request.status_code == 200
 
 def _save_as_csv(data: list):
     """
-    Once 10k or less records are registered, they are stored in 
-    the csv file corresponding to the USERS dataset.
+    Once 10k or less records are registered, they are stored in the csv
+    file corresponding to the USERS dataset.
 
     Parameters
     ----------
     data: list
-        Matrix of users features       
+        Matrix of users features
     """
     with open(PATH + '/'+ DATASET, "a", newline='') as csvfile:
         writer = csv.writer(csvfile, delimiter=',')
@@ -35,21 +35,21 @@ def _format_entry(user_data: dict) -> list:
     ----------
     user_data: dict
         JSON record of a user
-    
+
     Return
     ------
     list
-        List of user's features 
+        List of user's features
     """
     entry = [user_data[VARIABLES[0]]]
-    entry += [user_data["values"][v][0] for v in VARIABLES[1:]] 
+    entry += [user_data["values"][v][0] for v in VARIABLES[1:]]
     return entry
 
 
 def _start_thread(task, params: tuple) -> threading.Thread:
     """
     Thread that retrieve a data of a given batch of users_id
-    
+
     Parameters
     -----------
     users_id
@@ -68,7 +68,7 @@ def _get_user_info(u_id: int) -> list:
     ----------
     u_id: int
         User's id
-    
+
     Return
     ------
     list
@@ -123,7 +123,7 @@ def batching(users_id: list):
     """
     Import the USERS data by applying batching and
     multithreading.
-    
+
     Parameters
     ----------
     users_id: list
@@ -150,12 +150,11 @@ def batching(users_id: list):
         pct += 25
     print("\n USERS dataset have been created correctly")
 
-def isCompleted() -> bool | None: 
+def isCompleted() -> bool | None:
     """
-    It checks if it has been registered the information of 
-    all the user_ids. It's useful when this script fail for
-    some reason, since it's not necessary to load all the data
-    again. 
+    It checks if it has been registered the information of all the
+    user_ids. It's useful when this script fail for some reason, since
+    it's not necessary to load all the data again.
     """
     N = requests.get(API_URL)
     if isOK(N):
@@ -173,7 +172,7 @@ if __name__ == "__main__":
     if DATASET not in os.listdir(PATH):
         users_id = requests.get(API_URL)
         if isOK(users_id):
-            users_id = range(1, len(users_id.json()) + 1) 
+            users_id = range(1, len(users_id.json()) + 1)
             batching(users_id)
         else:
             print("STATUS CODE:{users_id.status_code}")

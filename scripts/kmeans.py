@@ -35,24 +35,25 @@ def _BSS(X):
         return value
     return get
 
-def kmeans_statistics(X: pd.DataFrame, upper_limit:float = None) -> tuple[list[float], list[float]]:
+def kmeans_statistics(X: pd.DataFrame,
+                      upper_limit:float = None) -> tuple[list[float], list[float]]:
     """
-    Compute the BSS and WSS for different values of k
-    in order to get the best one for this algorithm.
+    Compute the BSS and WSS for different values of k in order to get
+    the best one for this algorithm.
 
     Parameters
     ----------
     X: pd.DataFrame
         A sample or total training data to use in k-means
     """
-    n = X.shape[0] 
+    n = X.shape[0]
     get_BSS = _BSS(X)
     # Stats
     WSS = []
     BSS = []
     if upper_limit is None or type(upper_limit) != int:
         upper_limit = round(sqrt(n)) # Square root as heuristic rule
-    for k in range(2, upper_limit + 1): 
+    for k in range(2, upper_limit + 1):
         model = KMeans(n_clusters = k, random_state=123)
         model.fit(X)
         WSS.append(model.inertia_)
@@ -61,8 +62,8 @@ def kmeans_statistics(X: pd.DataFrame, upper_limit:float = None) -> tuple[list[f
 
 def plot_kmeans_stats(df_kmeans: pd.DataFrame):
     """
-    Apply the elbow method to find out the best k according 
-    to the WSS and BSS
+    Apply the elbow method to find out the best k according to the WSS
+    and BSS
 
     Parameters
     ----------
