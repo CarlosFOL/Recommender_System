@@ -1,8 +1,6 @@
 import hdbscan
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import seaborn as sns
 from sklearn.metrics import homogeneity_score, normalized_mutual_info_score, pairwise_distances
 
 
