@@ -1,9 +1,12 @@
 # Recommender System
 
 <p align = "center">
-<img src = "img/logo.png" width = 150>
+<img src = "img/logo.png" width = 200>
 </p>
 
+<p align = "center">
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Bytesized&size=25&duration=6000&pause=1000&color=497DF7&width=435&lines=Customizing+exclusive+selections..." alt="Typing SVG" /></a>
+</p>
 
 
 This was a challenge of the BOOST HACKHATON organized by INDITEX. The goal of this project is to design a recommender system for an e-commerce retailer. First, we had to analyze the data of the customer's organization in order to understand what kind of products they buy according to their preferences. For this task, there are three datasets that I have used. Their sizes are too large to upload to GitHub. So , we will provide you the URL of these objects  from our AWS bucket:
