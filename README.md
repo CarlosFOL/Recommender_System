@@ -9,3 +9,7 @@ This was a challenge of the BOOST HACKHATON organized by INDITEX. The goal of th
     * [Embeddings](https://cfolstorage.s3.eu-west-3.amazonaws.com/data_recommender_system/embeddings.csv) [582 MB]: The embeddings of the product's flat image obtained from computer vision techniques.
 
 * [Train](https://cfolstorage.s3.eu-west-3.amazonaws.com/data_recommender_system/train.parquet) [605 MB]: The training data that we have used to design this system.
+
+
+> [!NOTE]
+> The development of the model is in process...
