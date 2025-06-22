@@ -21,11 +21,12 @@ class ALS:
 
     """
 
-    def __init__(self, factors: int = 128, regularization: float = 0.01,
-                 iterations: int = 15):
+    def __init__(self, factors: int = 100, regularization: float = 1.0,
+                 iterations: int = 30, seed: int = 321):
         self.factors = factors
         self.regularization = regularization
         self.iterations = iterations
+        self.seed = seed
 
     def train(self, interaction_matrix: np.ndarray) -> als.AlternatingLeastSquares:
         """
@@ -44,7 +45,8 @@ class ALS:
             factors=self.factors,
             regularization=self.regularization,
             iterations=self.iterations,
-            calculate_training_loss=True
+            calculate_training_loss=True,
+            random_state=self.seed # The matrixs X and Y are randomly initialized.
         )
 
         model.fit(interaction_matrix, show_progress=True)
